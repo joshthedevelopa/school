@@ -324,21 +324,21 @@ if(isset($_POST) || isset($_GET)) {
             extract($_POST);
 
            
-            if(!empty($_FILES['s_photo']['name'])) {
-                $filename = $_FILES['s_photo']['name'];
-                $file = $_FILES['s_photo']['tmp_name'];
+            if(!empty($_FILES['t_photo']['name'])) {
+                $filename = $_FILES['t_photo']['name'];
+                $file = $_FILES['t_photo']['tmp_name'];
 
                 $fileExt = explode('.', $filename);
                 $fileExt = end($fileExt);
 
-                $uniq = uniqid('student', false);
+                $uniq = uniqid('teacher', false);
                 $filename = $uniq.".".$fileExt;
 
                 if(in_array(strtolower($fileExt), array('jpg', 'jpeg', 'png'))) {
                     if(move_uploaded_file($file, "../img/customImg/$filename")) {
-                        $s_photo = $filename;
+                        $t_photo = $filename;
 
-                        $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_photo = '$s_photo', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = '$s_class', s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = '$s_id'";
+                        $sql = "UPDATE teachers SET t_fName = '$t_fName', t_lName = '$t_lName', t_gender = '$t_gender', t_dob = '$t_dob', t_photo = '$t_photo', t_nationality = '$t_nationality', t_religion = '$t_religion', t_class = '$t_class', t_email = '$t_email', t_doAppoint = '$t_doAppoint', t_maritalStats = '$t_maritalStats', t_SSNITNum = '$t_SSNITNum', t_NHISNum = '$t_NHISNum', t_info = '$t_info' WHERE t_id = '$t_id'";
 
                         if(mysqli_query($conn, $sql)) {
                             $results['status'] = 'success';
@@ -360,7 +360,7 @@ if(isset($_POST) || isset($_GET)) {
 
                 }    
             } else {
-                $sql = "UPDATE students SET s_fName = '$s_fName', s_lName = '$s_lName', s_gender = '$s_gender', s_dob = '$s_dob', s_doa = '$s_doa', s_nationality = '$s_nationality', s_religion = '$s_religion', s_class = $s_class, s_homTelNum = '$s_homTelNum', s_docName = '$s_docName', s_docTel = '$s_docTel', s_fatherName = '$s_fatherName', s_motherName = '$s_motherName', s_info = '$s_info' WHERE s_id = $s_id";
+                $sql = "UPDATE teachers SET t_fName = '$t_fName', t_lName = '$t_lName', t_gender = '$t_gender', t_dob = '$t_dob', t_nationality = '$t_nationality', t_religion = '$t_religion', t_class = '$t_class', t_email = '$t_email', t_doAppoint = '$t_doAppoint', t_maritalStats = '$t_maritalStats', t_SSNITNum = '$t_SSNITNum', t_NHISNum = '$t_NHISNum', t_info = '$t_info' WHERE t_id = '$t_id'";
 
                 if(mysqli_query($conn, $sql)) {
                     $results['status'] = 'success';
@@ -519,6 +519,37 @@ if(isset($_POST) || isset($_GET)) {
                 $results['response'] = "A field is empty";
             }
 
+            echo json_encode($results);
+        }
+
+        if($_GET['func'] == 'addExpense') {
+            $results = array();
+            $response = array();
+
+            $results['status'] = '';
+
+            foreach ($_POST as $key => $value) {
+                if(empty($value)) {
+                    $results['status'] = 'error';
+                    $response[$key] = "Field is empty";
+                }
+            }
+
+            extract($_POST);
+
+            if($results['status'] == '') {
+                $sql = "INSERT INTO expenses (exp_name, exp_no, exp_type, exp_amount, exp_phone, exp_email, exp_status, exp_date) VALUES ('$exp_name', '$exp_no', '$exp_type', '$exp_amount', '$exp_phone', '$exp_email', '$exp_status', '$exp_date')";
+
+                if(mysqli_query($conn, $sql)) {
+                    $results['status'] = 'success';
+                    $response = "Expense added Successfully";
+                } else {
+                    $results['status'] = 'error';
+                    $response = "Error Occured";
+                }
+            } 
+
+            $results['response'] = $response;
             echo json_encode($results);
         }
 

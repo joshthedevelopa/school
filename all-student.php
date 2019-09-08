@@ -30,6 +30,8 @@
     <link rel="stylesheet" href="style.css">
     <!-- Modernize js -->
     <script src="js/modernizr-3.6.0.min.js"></script>
+        <!-- jquery-->
+        <script src="js/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
@@ -124,7 +126,7 @@
                             </table>
                         </div>
                     </div>
-                </div>bv
+                </div>
 
                 <div style="position: relative" id="detailCard" class="detailCard card height-auto">
                     <div id="preloader2" style="display: none"></div>
@@ -192,6 +194,7 @@
                                             <tr>
                                                 <td>Roll:</td>
                                                 <td class="spec s_id font-medium text-dark-medium"><?php echo $elem['s_id']?></td>
+          
                                             </tr>
                                             <tr>
                                                 <td>Address:</td>

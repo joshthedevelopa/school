@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AKKHOR | Add Expense</title>
+    <title>SMS | View Report</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
@@ -35,17 +35,25 @@
 </head>
 
 <body>
-<div class="notifyMessage">
-        <i class="close fa fa-times fa-2x"></i>
-        <h4>Title</h4>
-        <p>Message</p>
-    </div>
+
+
+<!-- notification -->
+<div id="mcon">
+        <!-- <div class="notifyMessage" style="display:block;background-color:green;">
+                
+                <h4>Message</h4>
+                <p style="color:white;">Registration successfull</p>
+        </div> -->
+</div>
+<!-- Nofication -->
+
     <!-- Preloader Start Here -->
     <div id="preloader"></div>
     <!-- Preloader End Here -->
     <div id="wrapper" class="wrapper bg-ash">
          <!-- Header Menu Area Start Here -->
-        <?php include 'header.php';?>
+         <?php include 'header.php';?>
+
         <!-- Header Menu Area End Here -->
         <!-- Page Area Start Here -->
         <div class="dashboard-page-one">
@@ -60,7 +68,7 @@
                         <li>
                             <a href="index.html">Home</a>
                         </li>
-                        <li>Add New Expense</li>
+                        <li>View Report</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
@@ -69,7 +77,7 @@
                     <div class="card-body">
                         <div class="heading-layout1">
                             <div class="item-title">
-                                <h3>Add New Expense</h3>
+                                <h3>view Report</h3>
                             </div>
                            <div class="dropdown">
                                 <a class="dropdown-toggle" href="#" role="button" 
@@ -82,63 +90,93 @@
                                 </div>
                             </div>
                         </div>
-                        <form class="new-added-form customForm">
-                            <input type="hidden" name="act" value="addExpense">
+
+
+                            <?php 
+                            
+                            include 'serv/conn.php';
+                            $id= $_GET['sid'];
+                            $getstu= mysqli_query($conn,"SELECT * FROM  students WHERE  s_id= '$id' ");
+                            $stu = mysqli_fetch_array($getstu);
+                            $studid= $stu['s_id'];
+                            $name = $stu['s_fName'].' '.$stu['s_lName'];
+                            $photo= $stu['s_photo'];
+                            $gender = $stu['s_gender'];
+
+                            $class= $stu['s_class'];
+                            
+                            
+                            ?>
+
+                        <form class="new-added-form" id="report-form" method="GET" action="print-report.php">
                             <div class="row">
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>Name *</label>
-                                    <input name="exp_name" type="text" placeholder="" class="form-control">
-                                    <span class="formSpan" id="exp_name">U</span>
+                                    <input type="text" name="name" placeholder="" class="form-control" value="<?php  echo $name; ?>" readonly>
                                 </div>
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>ID No *</label>
-                                    <input name="exp_no" type="text" placeholder="" class="form-control">
-                                    <span class="formSpan" id="exp_no">U</span>
+                                    <input type="text" name="sid" placeholder="" class="form-control" value="<?php echo $studid; ?> " readonly>
                                 </div>
+
+
+                                <input type="hidden" name="class" placeholder="" class="form-control" value="<?php echo $class; ?> ">
+
+
+
+
+
+                               
+
+
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Expanse Type *</label>
-                                    <select name="exp_type" class="select2">
-                                        <option value="">Please Select</option>
-                                        <option value="1">Salary</option>
-                                        <option value="2">Transport</option>
-                                        <option value="3">Maintanance</option>
-                                        <option value="3">Purchase</option>
-                                        <option value="3">Utilities</option>
+                                    <label>Select Term*</label>
+                                    <select class="select2" name="term">
+                                        <option value="">Select term</option>
+                                        <option value="term1">First Term</option>
+                                        <option value="term2">Second Term</option>
+                                        <option value="term3">Third Term</option>
+                                        
                                     </select>
-                                    <span class="formSpan" id="exp_type">U</span>
                                 </div>
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Amount *</label>
-                                    <input name="exp_amount" type="text" placeholder="" class="form-control">
-                                    <span class="formSpan" id="exp_amount">U</span>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Phone</label>
-                                    <input name="exp_phone" type="text" placeholder="" class="form-control">
-                                    <span class="formSpan" id="exp_phone">U</span>
-                                </div>
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
+
+                                
+
+                                
+
+                               
+                                <!-- <div class="col-xl-3 col-lg-6 col-12 form-group">
                                     <label>E-Mail Address</label>
-                                    <input name="exp_email" type="text" placeholder="" class="form-control">
-                                    <span class="formSpan" id="exp_email">U</span>
-                                </div>
+                                    <input type="text" placeholder="" class="form-control">
+                                </div> -->
+                                
+
+                               
+                                
+
+
                                 <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Status</label>
-                                    <select name="exp_status" class="select2">
-                                        <option value="0">Please Select</option>
-                                        <option value="1">Paid</option>
-                                        <option value="2">Due</option>
-                                        <option value="3">Others</option>
+                                    <label>Year</label>
+                                    <select class="select2" name="year">
+                                        <option value="">Please Select</option>
+                                        <?php 
+                                        
+                                        for ($i=1999; $i <2050 ; $i++) { 
+
+                                            echo '<option value="'.$i.'">'.$i.'</option>';
+                                            # code...
+                                        }
+
+                                        
+                                        ?>
+                                        
                                     </select>
-                                    <span class="formSpan" id="exp_status">U</span>
                                 </div>
-                                <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                    <label>Date</label>
-                                    <input name="exp_date" type="text" placeholder="dd/mm/yy" class="form-control air-datepicker" data-position="bottom right">
-                                    <span class="formSpan" id="exp_date">U</span>
-                                </div>
+
+
+                                
                                 <div class="col-12 form-group mg-t-8">
-                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add Expense</button>
+                                    <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Get Report</button>
                                     <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
                                 </div>
                             </div>
@@ -146,13 +184,16 @@
                     </div>
                 </div>
                 <!-- Add Expense Area End Here -->
-                <?php include 'footer.php';?>
+                <footer class="footer-wrap-layout1">
+                    <div class="copyright">© Copyrights <a href="#">SMS</a> <?php echo date ("Y"); ?>. All rights reserved. Designed by <a href="#">Purple Software</a></div>
+                </footer>
             </div>
         </div>
         <!-- Page Area End Here -->
     </div>
     <!-- jquery-->
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="ajax.js"></script>
     <!-- Plugins js -->
     <script src="js/plugins.js"></script>
     <!-- Popper js -->
@@ -167,10 +208,8 @@
     <script src="js/jquery.scrollUp.min.js"></script>
     <!-- Custom Js -->
     <script src="js/main.js"></script>
-    <!-- Custom Js -->
-    <script src="js/custom.js"></script>
+
 </body>
 
 
-<!-- Mirrored from www.radiustheme.com/demo/html/psdboss/akkhor/akkhor/add-expense.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 14 Aug 2019 14:38:38 GMT -->
 </html>

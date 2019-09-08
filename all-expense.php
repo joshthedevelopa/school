@@ -1,3 +1,4 @@
+<?php include 'serv/lib.php';?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -75,18 +76,18 @@
                         </div>
                         <form class="mg-b-20">
                             <div class="row gutters-8">
-                                <div class="col-3-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by ID ..." class="form-control">
+                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                    <input type="text" placeholder="Search by ID ..." class="rollSearch form-control">
                                 </div>
                                 <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Name ..." class="form-control">
+                                    <input type="text" placeholder="Search by Name ..." class="nameSearch form-control">
                                 </div>
-                                <div class="col-4-xxxl col-xl-3 col-lg-3 col-12 form-group">
-                                    <input type="text" placeholder="Search by Phone" class="form-control">
+                                <div class="col-4-xxxl col-xl-4 col-lg-3 col-12 form-group">
+                                    <input type="text" placeholder="Search by Phone" class="Search form-control">
                                 </div>
-                                <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
+                                <!-- <div class="col-1-xxxl col-xl-2 col-lg-3 col-12 form-group">
                                     <button type="submit" class="fw-btn-fill btn-gradient-yellow">SEARCH</button>
-                                </div>
+                                </div> -->
                             </div>
                         </form>
                         <div class="table-responsive">
@@ -96,7 +97,7 @@
                                         <th> 
                                             <div class="form-check">
                                                 <input type="checkbox" class="form-check-input checkAll">
-                                                <label class="form-check-label">ID</label>
+                                                <label class="form-check-label">ID Number</label>
                                             </div>
                                         </th>
                                         <th>Paid To</th>
@@ -110,6 +111,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php contentTable('expenses')?>
                                   
                                 </tbody>
                             </table>

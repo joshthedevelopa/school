@@ -62,10 +62,10 @@
                         <a href="add-teacher.php" class="nav-link"><i class="fas fa-angle-right"></i>Add
                             Teacher</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="teacher-payment.php" class="nav-link"><i
                                 class="fas fa-angle-right"></i>Payment</a>
-                    </li>
+                    </li> -->
                 </ul>
             </li>
 
@@ -100,6 +100,10 @@
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Account</span></a>
                 <ul class="nav sub-group-menu">
+                    <li class="nav-item">
+                        <a href="adf.php" class="nav-link"><i class="fas fa-angle-right"></i>Add Fees
+                            </a>
+                    </li>
                     <li class="nav-item">
                         <a href="all-fees.php" class="nav-link"><i class="fas fa-angle-right"></i>All Fees
                             Collection</a>
@@ -139,21 +143,21 @@
                         Routine</span></a>
             </li> -->
 
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="student-attendence.php" class="nav-link"><i
                         class="flaticon-checklist"></i><span>Attendence</span></a>
-            </li>
+            </li> -->
 
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-shopping-list"></i><span>Exam</span></a>
                 <ul class="nav sub-group-menu">
                     <li class="nav-item">
-                        <a href="exam-schedule.php" class="nav-link"><i class="fas fa-angle-right"></i>Exam
-                            Schedule</a>
+                        <a href="add-exams.php" class="nav-link"><i class="fas fa-angle-right"></i>Add
+                            Report</a>
                     </li>
                     <li class="nav-item">
-                        <a href="exam-grade.php" class="nav-link"><i class="fas fa-angle-right"></i>Exam
-                            Grades</a>
+                        <a href="view-exams.php" class="nav-link"><i class="fas fa-angle-right"></i>View
+                            Report</a>
                     </li>
                 </ul>
             </li>
