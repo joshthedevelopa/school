@@ -52,12 +52,12 @@
             <div class="dashboard-content-one">
                 <!-- Breadcubs Area Start Here -->
                 <div class="breadcrumbs-area">
-                    <h3>Transport</h3>
+                    <h3>Books</h3>
                     <ul>
                         <li>
                             <a href="index.php">Home</a>
                         </li>
-                        <li>Transport</li>
+                        <li>Books</li>
                     </ul>
                 </div>
                 <!-- Breadcubs Area End Here -->
@@ -67,31 +67,23 @@
                     <?php 
                                     include "serv/conn.php";
                                      if(isset($_POST['submit'])) {
-                                      $rnname = $_POST['rt_name'];
-                                      $vnname = $_POST['vn_name'];
-                                      $dnname = $_POST['dn_name'];
-                                      $lnname = $_POST['ln_name'];
-                                      $pnname = $_POST['pn_name'];
-                                        if (empty( $rnname)) {
+                                      $bk_title = $_POST['bk_title'];
+                                      $author = $_POST['author'];
+                                      $publisher = $_POST['publisher'];
+                                        if (empty( $bk_title)) {
                                             echo "Please enter value";
-                                        }elseif (empty($vnname)) {
+                                        }elseif (empty($author)) {
                                             echo "Please enter value";
-                                        }elseif (empty($dnname)) {
+                                        }elseif (empty($publisher)) {
                                             echo "Please enter value";
-                                        }elseif (empty($lnname)) {
-                                            echo "Please enter value";
-                                        }elseif (empty($pnname)) {
-                                            echo "Please enter value";
-                                        }elseif (strlen($pnname) < 10 ) {
-                                            echo "Incorrect number";
                                         }
                                         else {
-                                            $sql = " SELECT * FROM transport ";
+                                            $sql = " SELECT * FROM book ";
                                             $log = mysqli_query($conn, $sql);
                                             if (mysqli_num_rows($log) > 0) {
                                                 echo "data already exist";
                                             }else {
-                                                $sql = "INSERT INTO transport ( rn_name, vn_name, dn_name, ln_name, pn_name) VALUES ( '$rnname', '$vnname', '$dnname', '$lnname', '$pnname')";
+                                                $sql = "INSERT INTO book (bk_title, author, publisher) VALUES ( '$bk_title', '$author', '$publisher')";
                                                 $log = mysqli_query($conn, $sql);
                                                 echo "success";
                                             }
@@ -103,7 +95,7 @@
                             <div class="card-body">
                                 <div class="heading-layout1">
                                     <div class="item-title">
-                                        <h3>Add New Transport</h3>
+                                        <h3>Add Book Details</h3>
                                     </div>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -123,24 +115,16 @@
                                 <form class="new-added-form" method="POST">
                                     <div class="row">
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
-                                            <label>Route Name</label>
-                                            <input type="text" placeholder="" name="rt_name" class="form-control">
+                                            <label>Book Title</label>
+                                            <input type="text" placeholder="" name="bk_title" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
-                                            <label>Vehicle Number</label>
-                                            <input type="text" placeholder="" name="vn_name" class="form-control">
+                                            <label>Author</label>
+                                            <input type="text" placeholder="" name="author" class="form-control">
                                         </div>
                                         <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
-                                            <label>Driver Name</label>
-                                            <input type="text" placeholder="" name="dn_name" class="form-control">
-                                        </div>
-                                        <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
-                                            <label>License Number</label>
-                                            <input type="text" placeholder="" name="ln_name" class="form-control">
-                                        </div>
-                                        <div class="col-12-xxxl col-xl-4 col-sm-6 col-12 form-group">
-                                            <label>Phone Number</label>
-                                            <input type="varchar" placeholder="" name="pn_name" class="form-control">
+                                            <label>Publisher</label>
+                                            <input type="text" placeholder="" name="publisher" class="form-control">
                                         </div>
                                         <div class="col-12 form-group mg-t-8">
                                             <button type="submit" name="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
@@ -159,7 +143,7 @@
                             <div class="card-body">
                                 <div class="heading-layout1">
                                     <div class="item-title">
-                                        <h3>All Transport Lists</h3>
+                                        <h3>All Book Lists</h3>
                                     </div>
                                     <div class="dropdown">
                                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -203,12 +187,10 @@
                                                         <label class="form-check-label">ID</label>
                                                     </div>
                                                 </th>
-                                                <th>Route Name</th>
-                                                <th>Vehicle No</th>
-                                                <th>Driver Name</th>
-                                                <th>Driver License</th>
-                                                <th>Contact Number</th>
-                                               
+                                                <th>Book title</th>
+                                                <th>Author</th>
+                                                <th>Publisher</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
