@@ -74,11 +74,11 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Students</div>
-                                        <div class="item-number"><span class="counter" data-num="">
                                         <?php include "serv/conn.php"; 
                                         $sql = "SELECT * FROM students ";
                                         $log = mysqli_query($conn, $sql);
-                                        ?></span></div>
+                                        ?>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -95,12 +95,11 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Teachers</div>
-                                        <div class="item-number"><span class="counter" data-num="">
                                         <?php include "serv/conn.php"; 
                                         $sql = "SELECT * FROM teachers ";
                                         $log = mysqli_query($conn, $sql);
-                                        ?></span></div>
-                                        </span></div>
+                                        ?>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -117,12 +116,11 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Parents</div>
-                                        <div class="item-number"><span class="counter" data-num="">
                                         <?php include "serv/conn.php"; 
                                         $sql = "SELECT * FROM parents ";
                                         $log = mysqli_query($conn, $sql);
-                                        ?></span></div>
-                                        </span></div>
+                                        ?>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -139,12 +137,11 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Fees</div>
-                                        <div class="item-number"><span>$</span><span class="counter" data-num="">
                                         <?php include "serv/conn.php"; 
                                         $sql = "SELECT * FROM fees ";
                                         $log = mysqli_query($conn, $sql);
-                                        ?></span></div>
-                                        </span></div>
+                                        ?>
+                                        <div class="item-number"><span>$</span><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
                                     </div>
                                 </div>
                             </div>
