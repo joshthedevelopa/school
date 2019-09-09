@@ -1,3 +1,4 @@
+<?php include "serv/conn.php";?>
 <!doctype html>
 <html class="no-js" lang="">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -74,11 +75,12 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Students</div>
-                                        <?php include "serv/conn.php"; 
+                                        <?php
                                         $sql = "SELECT * FROM students ";
                                         $log = mysqli_query($conn, $sql);
+                                        $joy = mysqli_fetch_array($log);
                                         ?>
-                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $joy?>"><?php echo $joy?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -95,11 +97,13 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Teachers</div>
-                                        <?php include "serv/conn.php"; 
+                                        <?php 
                                         $sql = "SELECT * FROM teachers ";
                                         $log = mysqli_query($conn, $sql);
+                                        $joy = mysqli_fetch_array($log);
+                                        
                                         ?>
-                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $joy?>"><?php echo $joy?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -116,11 +120,12 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Parents</div>
-                                        <?php include "serv/conn.php"; 
+                                        <?php  
                                         $sql = "SELECT * FROM parents ";
                                         $log = mysqli_query($conn, $sql);
+                                        $joy = mysqli_fetch_array($log);
                                         ?>
-                                        <div class="item-number"><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
+                                        <div class="item-number"><span class="counter" data-num="<?php echo $joy?>"><?php echo $joy?></span></div>
                                     </div>
                                 </div>
                             </div>
@@ -137,11 +142,12 @@
                                 <div class="col-6">
                                     <div class="item-content">
                                         <div class="item-title">Fees</div>
-                                        <?php include "serv/conn.php"; 
+                                        <?php
                                         $sql = "SELECT * FROM fees ";
                                         $log = mysqli_query($conn, $sql);
+                                        $joy = mysqli_fetch_array($log);
                                         ?>
-                                        <div class="item-number"><span>$</span><span class="counter" data-num="<?php echo $log?>"><?php echo $log?></span></div>
+                                        <div class="item-number"><span>$</span><span class="counter" data-num="<?php echo $joy?>"><?php echo $joy?></span></div>
                                     </div>
                                 </div>
                             </div>
