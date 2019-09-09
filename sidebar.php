@@ -83,7 +83,7 @@
                 </ul>
             </li>
 
-            <li class="nav-item sidebar-nav-item">
+            <!-- <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-books"></i><span>Library</span></a>
                 <ul class="nav sub-group-menu">
                     <li class="nav-item">
@@ -95,7 +95,7 @@
                             Book</a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
 
             <li class="nav-item sidebar-nav-item">
                 <a href="#" class="nav-link"><i class="flaticon-technological"></i><span>Account</span></a>
